@@ -206,13 +206,13 @@
                     
                     if (skalaOpsi2 < 1.8) {
                         skalaOpsi2 += 0.2;
-                        gridGap += 40;
+                        //gridGap += 40;
                         posisiYHeader -= 30;
                         if (skalaOpsi2 >= 1.8) place2.classList.add('glow-active');
                     }
                     
                     place2.style.transform = `scale(${skalaOpsi2})`;
-                    grid.style.gap = `${gridGap}px`;
+                    //grid.style.gap = `${gridGap}px`;
                     header.style.transform = `translateY(${posisiYHeader}px)`;
                 } else {
                     const x = Math.random() * (window.innerWidth - 200);
@@ -250,7 +250,7 @@
             container.innerHTML = `
                 <div class="header-text" style="transform: translateY(0)">
                     <h1 style="font-size: 3rem">Yeeay! 🥳</h1>
-                    <p style="font-size: 1.5rem">Sampai ketemu nanti ya! <br> I Love You! ❤️</p>
+                    <p style="font-size: 1.5rem">Sampai ketemu besok ya! <br> I Love You! ❤️</p>
                 </div>
             `;
         }
