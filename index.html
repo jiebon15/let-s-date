@@ -6,290 +6,254 @@
     <title>Surprise buat Kamu ❤️</title>
     
     <style>
-        /* /* Import Font agar tampilan lebih modern dan estetik */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
-/* Pengaturan Dasar Halaman */
-body {
-  font-family: 'Poppins', sans-serif;
-  background-color: #ffe4e1; /* Warna pink pastel */
-  margin: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  overflow: hidden; /* Mencegah scrollbar muncul saat elemen 'lari' */
-}
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #ffe4e1;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+        }
 
-/* Kontainer Utama */
-.main-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  padding: 20px;
-}
+        .main-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 20px;
+        }
 
-/* Bagian Judul dan Instruksi */
-.header-text {
-  transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-  text-align: center;
-  z-index: 10;
-  margin-bottom: 20px;
-}
+        .header-text {
+            transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+            text-align: center;
+            z-index: 10;
+            margin-bottom: 20px;
+        }
 
-h1 {
-  color: #d81b60;
-  margin: 0;
-  font-size: clamp(1.5rem, 5vw, 2.5rem);
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.05);
-}
+        h1 {
+            color: #d81b60;
+            margin: 0;
+            font-size: clamp(1.5rem, 5vw, 2.5rem);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.05);
+        }
 
-p {
-  color: #ad1457;
-  margin: 10px 0;
-  font-size: 1.1rem;
-}
+        p {
+            color: #ad1457;
+            margin: 10px 0;
+            font-size: 1.1rem;
+        }
 
-/* Grid Kartu Pilihan */
-.places-grid {
-  display: flex;
-  gap: 30px; /* Jarak dinamis yang dikontrol oleh JavaScript */
-  justify-content: center;
-  align-items: center;
-  transition: gap 0.5s ease;
-  width: 100%;
-  padding-top: 40px;
-}
+        .places-grid {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            align-items: center;
+            transition: gap 0.5s ease;
+            width: 100%;
+            padding-top: 40px;
+        }
 
-/* Styling Kartu Pilihan (Item) */
-.place-item {
-  border: 6px solid white;
-  border-radius: 25px;
-  background-color: white;
-  padding: 15px;
-  cursor: pointer;
-  width: 180px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-  text-align: center;
-  position: relative;
-  
-  /* Transisi lengkap untuk: Besar/Kecil, Pindah (Teleport), Swap (Tukar), dan Glow */
-  transition: 
-    transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
-    left 0.4s ease, 
-    top 0.4s ease, 
-    opacity 0.3s ease, 
-    box-shadow 0.5s ease, 
-    border-color 0.5s ease;
-}
+        .place-item {
+            border: 6px solid white;
+            border-radius: 25px;
+            background-color: white;
+            padding: 15px;
+            cursor: pointer;
+            width: 180px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            text-align: center;
+            position: relative;
+            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+                        left 0.4s ease, top 0.4s ease, opacity 0.3s ease, 
+                        box-shadow 0.5s ease, border-color 0.5s ease;
+        }
 
-/* Gambar di dalam Kartu */
-.place-item img {
-  width: 100%;
-  height: 160px;
-  object-fit: cover;
-  border-radius: 15px;
-  pointer-events: none; /* Klik tembus ke div utama */
-}
+        .place-item img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 15px;
+            pointer-events: none;
+        }
 
-/* Teks di bawah Gambar */
-.place-item p {
-  font-weight: 600;
-  color: #d81b60;
-  margin: 15px 0 5px 0;
-  font-size: 1rem;
-}
+        .place-item p {
+            font-weight: 600;
+            color: #d81b60;
+            margin: 15px 0 5px 0;
+            font-size: 1rem;
+        }
 
-/* Styling Khusus Opsi Utama (Opsi 2) */
-#place2 {
-  z-index: 100;
-  border-color: #ffffff; /* Awalnya putih bersih */
-}
+        #place2 { z-index: 100; border-color: #ffffff; }
 
-/* EFEK HIGHLIGHT: Muncul saat size Opsi 2 sudah maksimal (dipicu via JS) */
-.glow-active {
-  box-shadow: 0 0 60px rgba(255, 64, 129, 0.8) !important;
-  border-color: #ff4081 !important;
-}
+        .glow-active {
+            box-shadow: 0 0 60px rgba(255, 64, 129, 0.8) !important;
+            border-color: #ff4081 !important;
+        }
 
-/* --- CUSTOM POP-UP (MODAL) STYLE --- */
-.modal {
-  display: none; /* Sembunyi di awal */
-  position: fixed;
-  z-index: 2000;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(216, 27, 96, 0.3); /* Overlay pink transparan */
-  backdrop-filter: blur(10px); /* Efek blur di belakang pop-up */
-}
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0; top: 0;
+            width: 100%; height: 100%;
+            background-color: rgba(216, 27, 96, 0.3);
+            backdrop-filter: blur(10px);
+        }
 
-.modal-content {
-  background-color: white;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  padding: 40px;
-  border-radius: 35px;
-  width: 85%;
-  max-width: 350px;
-  text-align: center;
-  box-shadow: 0 20px 50px rgba(0,0,0,0.2);
-  animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
+        .modal-content {
+            background-color: white;
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 40px;
+            border-radius: 35px;
+            width: 85%; max-width: 350px;
+            text-align: center;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+            animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
 
-/* Animasi Munculnya Pop-up */
-@keyframes popIn {
-  from { transform: translate(-50%, -50%) scale(0.6); opacity: 0; }
-  to { transform: translate(-50%, -50%) scale(1); opacity: 1; }
-}
+        @keyframes popIn {
+            from { transform: translate(-50%, -50%) scale(0.6); opacity: 0; }
+            to { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+        }
 
-.modal-content h2 {
-  color: #d81b60;
-  margin-top: 0;
-  font-size: 1.8rem;
-}
-
-.modal-content button {
-  background-color: #ff4081;
-  color: white;
-  border: none;
-  padding: 15px 35px;
-  border-radius: 18px;
-  cursor: pointer;
-  font-weight: bold;
-  font-size: 1.1rem;
-  margin-top: 20px;
-  transition: transform 0.2s, background-color 0.2s;
-}
-
-.modal-content button:hover {
-  transform: scale(1.05);
-  background-color: #f50057;
-}*/
+        .modal-content button {
+            background-color: #ff4081;
+            color: white;
+            border: none;
+            padding: 15px 35px;
+            border-radius: 18px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
 
-    <script>
-        /* let skalaOpsi2 = 1.0;
-let posisiYHeader = 0;
-let gridGap = 30;
-
-// Variabel deteksi klik berturut-turut
-let opsiTerakhir = null;
-let jumlahKlikSama = 0;
-
-function pilihTempat(no, element) {
-  const place2 = document.getElementById('place2');
-  const header = document.getElementById('headerText');
-  const grid = document.getElementById('gridContainer');
-
-  // --- 1. LOGIKA CEK KLIK BERTURUT-TURUT ---
-  if (no === 1 || no === 3) {
-    if (no === opsiTerakhir) {
-      jumlahKlikSama++;
-    } else {
-      opsiTerakhir = no;
-      jumlahKlikSama = 1;
-    }
-
-    // Jika diklik 2x berturut-turut -> TUKAR POSISI
-    if (jumlahKlikSama >= 2) {
-      tukarPosisi(element, place2);
-      jumlahKlikSama = 0; // Reset counter
-      opsiTerakhir = null; 
-      return; // Stop fungsi di sini agar tidak mengecil dulu
-    }
-
-    // --- 2. LOGIKA MENGECIL & MEMBESAR ---
-    let currentScale = parseFloat(element.getAttribute('data-scale')) || 1.0;
-    
-    if (currentScale > 0.5) {
-      let newScale = currentScale - 0.15;
-      element.style.transform = `scale(${newScale})`;
-      element.setAttribute('data-scale', newScale);
-      
-      // Update Opsi 2 (Target)
-      if (skalaOpsi2 < 1.8) {
-        skalaOpsi2 += 0.2;
-        gridGap += 40;
-        posisiYHeader -= 30;
+    <div class="main-container">
+        <div class="header-text" id="headerText">
+            <h1>Pilih Tempat Kencan Favorit Kamu! ❤️</h1>
+            <p>(Pilih salah satu, ya...)</p>
+        </div>
         
-        if (skalaOpsi2 >= 1.8) {
-          place2.classList.add('glow-active');
-        }
-      }
-      
-      place2.style.transform = `scale(${skalaOpsi2})`;
-      grid.style.gap = `${gridGap}px`;
-      header.style.transform = `translateY(${posisiYHeader}px)`;
+        <div class="places-grid" id="gridContainer">
+            <div class="place-item" onclick="pilihTempat(1, this)" id="place1">
+                <img src="https://via.placeholder.com/150" alt="Tempat 1">
+                <p>Taman Kota</p>
+            </div>
 
-    } else {
-      // --- 3. LOGIKA TELEPORT (Jika sudah sangat kecil) ---
-      const x = Math.random() * (window.innerWidth - 200);
-      const y = Math.random() * (window.innerHeight - 200);
-      element.style.position = 'fixed';
-      element.style.left = `${x}px`;
-      element.style.top = `${y}px`;
-      element.style.zIndex = "999";
-    }
-    
-  } else if (no === 2) {
-    // Munculkan Modal
-    document.getElementById('customModal').style.display = "block";
-  }
-}
+            <div class="place-item" onclick="pilihTempat(2, this)" id="place2">
+                <img src="https://via.placeholder.com/150" alt="Tempat 2">
+                <p>Restoran Romantis</p>
+            </div>
 
-// FUNGSI TUKAR POSISI YANG STABIL
-function tukarPosisi(el1, el2) {
-  // Efek menghilang halus
-  el1.style.opacity = "0";
-  el2.style.opacity = "0";
-
-  setTimeout(() => {
-    // Teknik Tukar Posisi "Simetris"
-    const p1 = el1.parentNode;
-    const p2 = el2.parentNode;
-    const placeholder = document.createElement('div');
-    
-    // Masukkan placeholder sementara di posisi el1
-    p1.insertBefore(placeholder, el1);
-    
-    // Pindahkan el1 ke posisi el2, dan el2 ke posisi placeholder tadi
-    p2.insertBefore(el1, el2);
-    p1.insertBefore(el2, placeholder);
-    
-    // Hapus placeholder
-    p1.removeChild(placeholder);
-
-    // Munculkan kembali
-    el1.style.opacity = "1";
-    el2.style.opacity = "1";
-  }, 250);
-}
-
-// Fungsi Penutup Halaman
-function lanjutHalaman() {
-// Masukkan nomor WA kamu (awali dengan 62) dan pesan otomatisnya
-  const pesan = "Iyaaa aku mau banget nge-date di tempat itu! ❤️";
-  const linkWA = "https://wa.me/6288216486035?text=" + encodeURIComponent(pesan);
-  
-  // Buka WhatsApp di tab baru
-  window.open(linkWA, '_blank');  document.getElementById('customModal').style.display = "none";
-  const container = document.querySelector('.main-container');
-  container.innerHTML = `
-    <div class="header-text" style="transform: translateY(0)">
-      <h1 style="font-size: 3rem">Yeeay! 🥳</h1>
-      <p style="font-size: 1.5rem">Sampai ketemu nanti ya! <br> I Love You! ❤️</p>
+            <div class="place-item" onclick="pilihTempat(3, this)" id="place3">
+                <img src="https://via.placeholder.com/150" alt="Tempat 3">
+                <p>Pantai</p>
+            </div>
+        </div>
     </div>
-  `;
-}
-*/
+
+    <div id="customModal" class="modal">
+        <div class="modal-content">
+            <h2>Pilihan Bagus! ❤️</h2>
+            <p>Aku juga pengen banget ke sana sama kamu!</p>
+            <button onclick="lanjutHalaman()">Mau Banget!</button>
+        </div>
+    </div>
+
+    <script>
+        let skalaOpsi2 = 1.0;
+        let posisiYHeader = 0;
+        let gridGap = 30;
+        let opsiTerakhir = null;
+        let jumlahKlikSama = 0;
+
+        function pilihTempat(no, element) {
+            const place2 = document.getElementById('place2');
+            const header = document.getElementById('headerText');
+            const grid = document.getElementById('gridContainer');
+
+            if (no === 1 || no === 3) {
+                if (no === opsiTerakhir) {
+                    jumlahKlikSama++;
+                } else {
+                    opsiTerakhir = no;
+                    jumlahKlikSama = 1;
+                }
+
+                if (jumlahKlikSama >= 2) {
+                    tukarPosisi(element, place2);
+                    jumlahKlikSama = 0;
+                    opsiTerakhir = null; 
+                    return;
+                }
+
+                let currentScale = parseFloat(element.getAttribute('data-scale')) || 1.0;
+                
+                if (currentScale > 0.5) {
+                    let newScale = currentScale - 0.15;
+                    element.style.transform = `scale(${newScale})`;
+                    element.setAttribute('data-scale', newScale);
+                    
+                    if (skalaOpsi2 < 1.8) {
+                        skalaOpsi2 += 0.2;
+                        gridGap += 40;
+                        posisiYHeader -= 30;
+                        if (skalaOpsi2 >= 1.8) place2.classList.add('glow-active');
+                    }
+                    
+                    place2.style.transform = `scale(${skalaOpsi2})`;
+                    grid.style.gap = `${gridGap}px`;
+                    header.style.transform = `translateY(${posisiYHeader}px)`;
+                } else {
+                    const x = Math.random() * (window.innerWidth - 200);
+                    const y = Math.random() * (window.innerHeight - 200);
+                    element.style.position = 'fixed';
+                    element.style.left = `${x}px`;
+                    element.style.top = `${y}px`;
+                }
+            } else if (no === 2) {
+                document.getElementById('customModal').style.display = "block";
+            }
+        }
+
+        function tukarPosisi(el1, el2) {
+            el1.style.opacity = "0";
+            el2.style.opacity = "0";
+            setTimeout(() => {
+                const p1 = el1.parentNode;
+                const placeholder = document.createElement('div');
+                p1.insertBefore(placeholder, el1);
+                el1.parentNode.insertBefore(el1, el2);
+                p1.insertBefore(el2, placeholder);
+                p1.removeChild(placeholder);
+                el1.style.opacity = "1";
+                el2.style.opacity = "1";
+            }, 250);
+        }
+
+        function lanjutHalaman() {
+            const pesan = "Iyaaa aku mau banget nge-date di tempat itu! ❤️";
+            const linkWA = "https://wa.me/6288216486035?text=" + encodeURIComponent(pesan);
+            window.open(linkWA, '_blank');
+            document.getElementById('customModal').style.display = "none";
+            const container = document.querySelector('.main-container');
+            container.innerHTML = `
+                <div class="header-text" style="transform: translateY(0)">
+                    <h1 style="font-size: 3rem">Yeeay! 🥳</h1>
+                    <p style="font-size: 1.5rem">Sampai ketemu nanti ya! <br> I Love You! ❤️</p>
+                </div>
+            `;
+        }
     </script>
 </body>
 </html>
