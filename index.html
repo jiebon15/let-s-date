@@ -123,6 +123,8 @@
             to { transform: translate(-50%, -50%) scale(1); opacity: 1; }
         }
 
+        .modal-content h2 { color: #d81b60; margin-top: 0; font-size: 1.8rem; }
+
         .modal-content button {
             background-color: #ff4081;
             color: white;
@@ -157,7 +159,7 @@
 
             <div class="place-item" onclick="pilihTempat(3, this)" id="place3">
                 <img src="https://lh3.googleusercontent.com/d/1kP7KnQ1Yo2Z1kb893VtEUXAKWohMVVh0" alt="Tempat 3">
-                <p>Seaworl Ancol</p>
+                <p>Seaworld Ancol</p>
             </div>
         </div>
     </div>
@@ -173,7 +175,6 @@
     <script>
         let skalaOpsi2 = 1.0;
         let posisiYHeader = 0;
-        let gridGap = 30;
         let opsiTerakhir = null;
         let jumlahKlikSama = 0;
 
@@ -206,13 +207,11 @@
                     
                     if (skalaOpsi2 < 1.8) {
                         skalaOpsi2 += 0.2;
-                        //gridGap += 40;
                         posisiYHeader -= 30;
                         if (skalaOpsi2 >= 1.8) place2.classList.add('glow-active');
                     }
                     
                     place2.style.transform = `scale(${skalaOpsi2})`;
-                    //grid.style.gap = `${gridGap}px`;
                     header.style.transform = `translateY(${posisiYHeader}px)`;
                 } else {
                     const x = Math.random() * (window.innerWidth - 200);
@@ -220,6 +219,7 @@
                     element.style.position = 'fixed';
                     element.style.left = `${x}px`;
                     element.style.top = `${y}px`;
+                    element.style.zIndex = "999";
                 }
             } else if (no === 2) {
                 document.getElementById('customModal').style.display = "block";
